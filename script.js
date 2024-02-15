@@ -11,16 +11,16 @@ let frameX = 0;
 let frameY = 0;
 let gameFrame = 0;
 let staggerFrames = 5;
-//let x = 0;
 
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    //ctx.fillRect(x, 50, 100, 100);
-    ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
-    if (gameFrame % staggerFrames == 0){
-        if (frameX < 6) frameX++;
-    else frameX = 0;
-    }
+    let positon = Math.floor(gameFrame/staggerFrames) % 6;
+    frameX = spriteWidth * positon;
+    ctx.drawImage(playerImage, frameX, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+    // if (gameFrame % staggerFrames == 0){
+    //     if (frameX < 6) frameX++;
+    // else frameX = 0;
+    // }
     
 
     gameFrame++;
