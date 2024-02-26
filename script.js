@@ -7,6 +7,7 @@ const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
 const spriteWidth = 575;
 const spriteHeight = 523;
+let playerState = 'dizzy';
 
 let gameFrame = 0;
 let staggerFrames = 5;
@@ -22,7 +23,7 @@ const animationStates = [
     },
     {
         name: 'fall',
-        frames: 9,
+        frames: 7,
     },
     {
         name: 'run',
@@ -68,9 +69,9 @@ console.log(spriteAnimations);
 
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    let positon = Math.floor(gameFrame/staggerFrames) % spriteAnimations["jump"].loc.length;
+    let positon = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length;
     let frameX = spriteWidth * positon;
-    let frameY = spriteAnimations["jump"].loc[positon].y;
+    let frameY = spriteAnimations[playerState].loc[positon].y;
     ctx.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
     // if (gameFrame % staggerFrames == 0){
     //     if (frameX < 6) frameX++;
